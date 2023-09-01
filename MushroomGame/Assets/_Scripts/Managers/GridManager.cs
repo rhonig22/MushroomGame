@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+    public static GridManager Instance;
     [SerializeField] private int _width, _height;
     [SerializeField] private Tile _grassTile, _rockTile;
 
@@ -11,12 +13,12 @@ public class GridManager : MonoBehaviour
 
     private Dictionary<Vector2, Tile> _tiles;
 
-    private void Start()
+    private void Awake()
     {
-        GenerateGrid();
+        Instance = this;
     }
 
-    void GenerateGrid()
+    public void GenerateGrid()
     {
         _tiles = new Dictionary<Vector2, Tile>();
         for (int x = 0; x < _width; x++)
@@ -33,6 +35,7 @@ public class GridManager : MonoBehaviour
         }
 
         _camera.transform.position = new Vector3((float)_width / 2 - .5f, (float)_height / 2 - .5f, -10);
+        GameManager.Instance.ChangeState(GameState.SpawnPlayer);
     }
 
     public Tile GetTileAtPos(Vector2 pos)
@@ -40,5 +43,15 @@ public class GridManager : MonoBehaviour
         if (_tiles.TryGetValue(pos,out var tile)) return tile;
 
         return null;
+    }
+
+    public Tile GetPlayerTile()
+    {
+        return _tiles.Where(t => t.Key.x < _width && t.Value.Walkable).FirstOrDefault().Value;
+    }
+
+    public Tile GetObstacleSpawn()
+    {
+        return _tiles.Where(t => t.Key.x > _width && t.Value.Walkable).OrderBy(t => Random.value).FirstOrDefault().Value;
     }
 }
