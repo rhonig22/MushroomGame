@@ -79,6 +79,7 @@ MonoBehaviour:
   _highlight: {fileID: 7823492159386464773}
   _isWalkable: 1
   OccupiedUnit: {fileID: 0}
+  TileName: Grass
   _offsetColor: {r: 0.35686275, g: 0.8901961, b: 0.36078432, a: 1}
 --- !u!212 &6865271327561082412 stripped
 SpriteRenderer:

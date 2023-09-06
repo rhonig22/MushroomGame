@@ -8,6 +8,9 @@ public class UnitManager : MonoBehaviour
     public static UnitManager Instance;
 
     private List<ScriptableUnit> _units;
+
+    public PlayerUnit SelectedPlayer;
+
     private void Awake()
     {
         Instance = this;
@@ -20,6 +23,28 @@ public class UnitManager : MonoBehaviour
         var player = Instantiate(playerPrefab);
         var spawnTile = GridManager.Instance.GetPlayerTile();
         spawnTile.SetUnit(player);
+
+        GameManager.Instance.ChangeState(GameState.SpawnObstacles);
+    }
+
+    public void SpawnObstacle()
+    {
+        var obstacleCount = 1;
+        for (int i = 0; i < obstacleCount; i++)
+        {
+            var obstaclePrefab = GetRandomUnit<BaseObstacle>(Faction.Obstacle);
+            var obstacle = Instantiate(obstaclePrefab);
+            var spawnTile = GridManager.Instance.GetObstacleSpawn();
+            spawnTile.SetUnit(obstacle);
+        }
+
+        GameManager.Instance.ChangeState(GameState.PlayerTurn);
+    }
+
+    public void SetSelectedPlayer(PlayerUnit player)
+    {
+        SelectedPlayer = player;
+        MenuManager.Instance.ShowSelectedUnit(SelectedPlayer);
     }
 
     private T GetRandomUnit<T>(Faction faction) where T : BaseUnit
