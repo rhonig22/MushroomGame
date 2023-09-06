@@ -85,6 +85,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseColor: {r: 0.6784314, g: 0.39215687, b: 0.27058825, a: 1}
-  _offsetColor: {r: 0.7735849, g: 0.407318, b: 0.25178, a: 1}
   _renderer: {fileID: 2588759315015578983}
   _highlight: {fileID: 1169222505618465102}
+  _isWalkable: 0
+  OccupiedUnit: {fileID: 0}
+  TileName: Rock

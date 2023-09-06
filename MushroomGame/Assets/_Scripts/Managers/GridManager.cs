@@ -52,6 +52,6 @@ public class GridManager : MonoBehaviour
 
     public Tile GetObstacleSpawn()
     {
-        return _tiles.Where(t => t.Key.x > _width && t.Value.Walkable).OrderBy(t => Random.value).FirstOrDefault().Value;
+        return _tiles.Where(t => t.Key.x > _width / 2 && t.Value.Walkable).OrderBy(o => Random.value).FirstOrDefault().Value;
     }
 }
