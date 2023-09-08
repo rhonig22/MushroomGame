@@ -77,10 +77,16 @@ MonoBehaviour:
   _baseColor: {r: 0.61960787, g: 0.98039216, b: 0.4392157, a: 1}
   _renderer: {fileID: 6865271327561082412}
   _highlight: {fileID: 7823492159386464773}
+  _selection: {fileID: 1012501655898675703}
   _isWalkable: 1
   OccupiedUnit: {fileID: 0}
   TileName: Grass
   _offsetColor: {r: 0.35686275, g: 0.8901961, b: 0.36078432, a: 1}
+--- !u!1 &1012501655898675703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6645849993514810531, guid: 955f14cb263966f41b09ffe24e99e9ae, type: 3}
+  m_PrefabInstance: {fileID: 5924465242169845076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &6865271327561082412 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 968760289201570680, guid: 955f14cb263966f41b09ffe24e99e9ae, type: 3}

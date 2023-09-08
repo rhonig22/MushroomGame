@@ -67,6 +67,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 968760289201570680, guid: 955f14cb263966f41b09ffe24e99e9ae, type: 3}
   m_PrefabInstance: {fileID: 3358740533267789343}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8261406992952363708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6645849993514810531, guid: 955f14cb263966f41b09ffe24e99e9ae, type: 3}
+  m_PrefabInstance: {fileID: 3358740533267789343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8559833261026922871 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6365282027598817128, guid: 955f14cb263966f41b09ffe24e99e9ae, type: 3}
@@ -87,6 +92,7 @@ MonoBehaviour:
   _baseColor: {r: 0.6784314, g: 0.39215687, b: 0.27058825, a: 1}
   _renderer: {fileID: 2588759315015578983}
   _highlight: {fileID: 1169222505618465102}
+  _selection: {fileID: 8261406992952363708}
   _isWalkable: 0
   OccupiedUnit: {fileID: 0}
   TileName: Rock

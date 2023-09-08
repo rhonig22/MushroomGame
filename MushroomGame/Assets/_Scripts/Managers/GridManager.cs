@@ -54,4 +54,27 @@ public class GridManager : MonoBehaviour
     {
         return _tiles.Where(t => t.Key.x > _width / 2 && t.Value.Walkable).OrderBy(o => Random.value).FirstOrDefault().Value;
     }
+
+    public void ToggleSelections(bool showSelections)
+    {
+        var player = UnitManager.Instance.SelectedPlayer.OccupiedTile;
+        var playerCoords = player.GetCoordinates();
+        SetTileSelection(new Vector2(playerCoords.x - 1, playerCoords.y), showSelections);
+        SetTileSelection(new Vector2(playerCoords.x + 1, playerCoords.y), showSelections);
+        SetTileSelection(new Vector2(playerCoords.x, playerCoords.y - 1), showSelections);
+        SetTileSelection(new Vector2(playerCoords.x, playerCoords.y + 1), showSelections);
+    }
+
+    private void SetTileSelection(Vector2 coord, bool showSelection)
+    {
+        if (coord.x >= 0 && coord.x < _width &&
+            coord.y >= 0 && coord.y < _height)
+        {
+            var tile = _tiles[coord];
+            if (tile.Walkable)
+            {
+                tile.SetSelectable(showSelection);
+            }
+        }
+    }
 }

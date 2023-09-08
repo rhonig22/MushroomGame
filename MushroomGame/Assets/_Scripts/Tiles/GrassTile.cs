@@ -8,6 +8,7 @@ public class GrassTile : Tile
 
     public override void Init(int x, int y)
     {
+        base.Init(x, y);
         var isOffset = (x + y) % 2 == 1;
         _renderer.color = !isOffset ? _baseColor : _offsetColor;
     }
