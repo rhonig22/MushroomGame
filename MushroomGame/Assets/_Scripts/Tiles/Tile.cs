@@ -78,6 +78,7 @@ public abstract class Tile : MonoBehaviour
                 GridManager.Instance.ToggleSelections(false);
                 SetUnit(UnitManager.Instance.SelectedPlayer);
                 UnitManager.Instance.SetSelectedPlayer(null);
+                GameManager.Instance.ChangeState(GameState.UpdateObstacles);
             }
         }
     }

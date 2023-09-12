@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970783999403954751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6771836, y: 2.0576677, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100,3 +100,7 @@ MonoBehaviour:
   OccupiedTile: {fileID: 0}
   Faction: 1
   UnitName: Moss
+  _lifeSpan: 1
+  _speed: 1
+  _canDie: 0
+  _direction: 3

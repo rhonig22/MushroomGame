@@ -25,16 +25,21 @@ public class GameManager : MonoBehaviour
         {
             case GameState.GenerateGrid:
                 GridManager.Instance.GenerateGrid();
+                ChangeState(GameState.SpawnPlayer);
                 break;
             case GameState.SpawnPlayer:
                 UnitManager.Instance.SpawnPlayer();
+                GameManager.Instance.ChangeState(GameState.SpawnObstacles);
                 break;
             case GameState.SpawnObstacles:
-                UnitManager.Instance.SpawnObstacle();
+                UnitManager.Instance.SpawnObstacles();
+                GameManager.Instance.ChangeState(GameState.PlayerTurn);
                 break;
             case GameState.PlayerTurn:
                 break;
-            case GameState.UpdateAll:
+            case GameState.UpdateObstacles:
+                UnitManager.Instance.UpdateObstacles();
+                GameManager.Instance.ChangeState(GameState.PlayerTurn);
                 break;
             default:
                 break;
@@ -47,5 +52,5 @@ public enum GameState {
     SpawnPlayer = 1,
     SpawnObstacles = 2,
     PlayerTurn = 3,
-    UpdateAll = 4
+    UpdateObstacles = 4
 }

@@ -7,6 +7,7 @@ public class ScriptableUnit : ScriptableObject
 {
     public Faction Faction;
     public BaseUnit UnitPrefab;
+    public string UnitName;
 }
 
 public enum Faction

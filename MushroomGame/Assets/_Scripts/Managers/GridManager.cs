@@ -35,7 +35,6 @@ public class GridManager : MonoBehaviour
         }
 
         _camera.transform.position = new Vector3((float)_width / 2 - .5f, (float)_height / 2 - .5f, -10);
-        GameManager.Instance.ChangeState(GameState.SpawnPlayer);
     }
 
     public Tile GetTileAtPos(Vector2 pos)
