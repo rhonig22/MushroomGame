@@ -12,15 +12,11 @@ public class MossEnemy : BaseObstacle
         if (nextTile != null && nextTile.Walkable)
         {
             nextTile.SetUnit(this);
+            UnitManager.Instance.SpawnObstacleByName("MossBlock", currentTile);
         }
         else
         {
             RotateRight();
-        }
-
-        if (currentTile != nextTile)
-        {
-            UnitManager.Instance.SpawnObstacleByName("MossBlock", currentTile);
         }
     }
 }

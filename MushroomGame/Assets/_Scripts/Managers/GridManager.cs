@@ -12,15 +12,19 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Transform _camera;
 
     private Dictionary<Vector2, Tile> _tiles;
+    private GameObject _grid;
 
     private void Awake()
     {
         Instance = this;
+        _grid = new GameObject("Grid");
     }
 
     public void GenerateGrid()
     {
-        _tiles = new Dictionary<Vector2, Tile>();
+        if (_tiles == null)
+            _tiles = new Dictionary<Vector2, Tile>();
+
         for (int x = 0; x < _width; x++)
         {
             for (int y = 0; y < _height; y++)
@@ -31,10 +35,21 @@ public class GridManager : MonoBehaviour
 
                 tile.Init(x,y);
                 _tiles[new Vector2(x, y)] = tile;
+                tile.transform.parent = _grid.transform;
             }
         }
 
         _camera.transform.position = new Vector3((float)_width / 2 - .5f, (float)_height / 2 - .5f, -10);
+    }
+
+    public void ClearGrid()
+    {
+        if ( _tiles != null && _tiles.Count > 0)
+        {
+            _tiles.Clear();
+            DestroyImmediate(_grid);
+            _grid = new GameObject("Grid");
+        }
     }
 
     public Tile GetTileAtPos(Vector2 pos)
@@ -52,6 +67,11 @@ public class GridManager : MonoBehaviour
     public Tile GetObstacleSpawn()
     {
         return _tiles.Where(t => t.Key.x > _width / 2 && t.Value.Walkable).OrderBy(o => Random.value).FirstOrDefault().Value;
+    }
+
+    public Tile GetRandomSpawn()
+    {
+        return _tiles.Where(t => t.Value.Walkable).OrderBy(o => Random.value).FirstOrDefault().Value;
     }
 
     public void ToggleSelections(bool showSelections)
