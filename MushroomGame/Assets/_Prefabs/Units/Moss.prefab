@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OccupiedTile: {fileID: 0}
   Faction: 1
-  UnitName: Moss
+  UnitName: Mossy
   _lifeSpan: 1
   _speed: 1
   _canDie: 0

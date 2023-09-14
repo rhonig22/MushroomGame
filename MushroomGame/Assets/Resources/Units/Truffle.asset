@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 103482fc4f9bdf14198bd36b7c455476, type: 3}
-  m_Name: Moss
+  m_Name: Truffle
   m_EditorClassIdentifier: 
-  Faction: 2
-  UnitPrefab: {fileID: 8543794368562452043, guid: e89870016d79e434a97184e7ef47bf4c, type: 3}
-  UnitName: Moss
+  Faction: 3
+  UnitPrefab: {fileID: 7515238418533342766, guid: 8b4586083ef57094a816b33bf8f2b178, type: 3}
+  UnitName: Truffle

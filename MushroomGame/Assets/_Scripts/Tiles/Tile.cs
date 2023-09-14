@@ -12,6 +12,7 @@ public abstract class Tile : MonoBehaviour
     protected int _xVal, _yVal;
 
     public BaseUnit OccupiedUnit;
+    public BaseCollectible Collectible;
     public string TileName;
     public bool Walkable => _isWalkable && OccupiedUnit == null;
     public bool Selectable => _isSelectable && OccupiedUnit == null;
@@ -35,6 +36,18 @@ public abstract class Tile : MonoBehaviour
         MenuManager.Instance.ShowTileInfo(null);
     }
 
+    public void SetCollectible(BaseCollectible collect)
+    {
+        if (collect.OccupiedTile != null)
+        {
+            collect.OccupiedTile.Collectible = null;
+        }
+
+        collect.SetGoalPosition(transform.position);
+        Collectible = collect;
+        collect.OccupiedTile = this;
+    }
+
     public void SetUnit(BaseUnit unit)
     {
         if (unit.OccupiedTile != null)
@@ -42,7 +55,7 @@ public abstract class Tile : MonoBehaviour
             unit.OccupiedTile.OccupiedUnit = null;
         }
 
-        unit.transform.position = transform.position;
+        unit.SetGoalPosition(transform.position);
         OccupiedUnit = unit;
         unit.OccupiedTile = this;
     }

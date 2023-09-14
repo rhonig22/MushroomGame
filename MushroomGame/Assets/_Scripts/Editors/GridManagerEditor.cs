@@ -24,7 +24,10 @@ public class GridManagerEditor : UnityEditor.Editor
         serializedObject.Update();
         EditorGUI.BeginChangeCheck();
 
-        _gridManager.GenerateGrid();
+        
+        // _gridManager.ClearGrid();
+        // _gridManager.GenerateGrid();
+        
 
         EditorGUI.EndChangeCheck();
         serializedObject.ApplyModifiedProperties();

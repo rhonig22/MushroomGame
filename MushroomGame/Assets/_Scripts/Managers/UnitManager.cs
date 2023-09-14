@@ -39,6 +39,23 @@ public class UnitManager : MonoBehaviour
         }
     }
 
+    public void SpawnCollectibles()
+    {
+        var truffleCount = PlayerController.Instance.TruffleGoal;
+        for (int i = 0; i < truffleCount; i++)
+        {
+            var spawnTile = GridManager.Instance.GetRandomSpawn();
+            SpawnCollectibleByName("Truffle", spawnTile);
+        }
+    }
+
+    public void SpawnCollectibleByName(string name, Tile tile)
+    {
+        var collectiblePrefab = GetUnitByName<BaseCollectible>(name);
+        var collectible = Instantiate(collectiblePrefab);
+        tile.SetCollectible(collectible);
+    }
+
     public void SpawnObstacleByName(string name, Tile tile)
     {
         var obstaclePrefab = GetUnitByName<BaseObstacle>(name);

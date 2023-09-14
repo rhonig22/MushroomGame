@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.SpawnObstacles:
                 UnitManager.Instance.SpawnObstacles();
+                UnitManager.Instance.SpawnCollectibles();
                 GameManager.Instance.ChangeState(GameState.PlayerTurn);
                 break;
             case GameState.PlayerTurn:

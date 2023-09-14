@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PlayerUnit : BaseUnit
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Update()
     {
-        
-    }
+        base.Update();
+        if (OccupiedTile.Collectible != null)
+        {
+            var collectible = OccupiedTile.Collectible;
+            PlayerController.Instance.AddCollectible(collectible);
+            OccupiedTile.Collectible = null;
+            Destroy(collectible.gameObject);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
